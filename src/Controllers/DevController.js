@@ -3,7 +3,7 @@ const axios = require("axios");
 const Dev = require("../Models/Dev");
 
 module.exports = {
-  store: async (request, response) => {
+  async store(request, response) {
     const { github_username, techs, latitude, longitude } = request.body;
 
     const apiResponse = await axios.get(
