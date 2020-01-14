@@ -4,7 +4,7 @@ const Dev = require("../Models/Dev");
 
 module.exports = {
   store: async (request, response) => {
-    const { github_username, techs } = request.body;
+    const { github_username, techs, latitude, longitude } = request.body;
 
     const apiResponse = await axios.get(
       `https://api.github.com/users/${github_username}`
@@ -14,14 +14,18 @@ module.exports = {
 
     const techsArray = techs.split(",").map(tech => tech.trim());
 
-    console.log(name, avatar_url, bio, techsArray);
+    const location = {
+      type: "Point",
+      coordinates: [longitude, latitude]
+    };
 
     const dev = await Dev.create({
       name,
       github_username,
       avatar_url,
       bio,
-      techs: techsArray
+      techs: techsArray,
+      location
     });
 
     return response.json(dev);
