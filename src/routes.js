@@ -1,13 +1,13 @@
 const { Router } = require("express");
 
 const DevController = require("./Controllers/DevController");
+const SearchController = require("./Controllers/SearchController");
 
 const routes = Router();
 
-routes.get("/", (request, response) => {
-  return response.json({ message: "Hello World" });
-});
-
 routes.post("/devs", DevController.store);
+routes.get("/devs", DevController.index);
+
+routes.get("/search", SearchController.index);
 
 module.exports = routes;
