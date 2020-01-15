@@ -31,18 +31,30 @@ module.exports = {
           techs: techsArray,
           location
         });
-        return response.json(dev);
       }
+      return response.json(dev);
     } catch (error) {
       return response.json(error);
     }
   },
 
-  async index(response) {
+  async index(request, response) {
     try {
       const devs = await Dev.find();
 
       return response.json(devs);
+    } catch (error) {
+      return response.json(error);
+    }
+  },
+
+  async destroy(request, response) {
+    try {
+      const _id = request.params.id;
+
+      await Dev.findOneAndDelete({ _id });
+
+      return response.json({ message: "Dev was removed!" });
     } catch (error) {
       return response.json(error);
     }
