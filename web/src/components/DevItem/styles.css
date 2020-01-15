@@ -1,0 +1,82 @@
+li.dev-item {
+  background-color: #fff;
+  border-radius: 30px;
+  height: 250px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: 0.5s;
+}
+
+li.dev-item:hover {
+  -webkit-box-shadow: -1px 9px 10px 0px rgba(0, 0, 0, 0.15);
+  -moz-box-shadow: -1px 9px 10px 0px rgba(0, 0, 0, 0.15);
+  box-shadow: -1px 9px 10px 0px rgba(0, 0, 0, 0.15);
+}
+
+li.dev-item header {
+  display: flex;
+  align-items: center;
+}
+
+li.dev-item header img {
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+}
+
+li.dev-item header .user-info {
+  margin-left: 10px;
+}
+
+.user-info strong {
+  display: block;
+  font-size: 16px;
+  color: #333;
+}
+
+.user-info span {
+  font-size: 13px;
+  color: #999;
+  margin-top: 2px;
+}
+
+li.dev-item p {
+  color: #666;
+  font-size: 14px;
+  line-height: 20px;
+  margin: 10px 0;
+}
+
+li.dev-item a {
+  color: #333;
+  font-size: 14px;
+  text-decoration: none;
+  transition: 0.3s;
+  display: flex;
+  align-items: center;
+}
+
+li.dev-item i {
+  color: #333;
+  font-size: 20px;
+  transition: 0.3s;
+  margin: 0 5px;
+}
+
+li.dev-item a:hover > i {
+  color: #5a2ea6;
+  cursor: pointer;
+}
+
+li.dev-item a:hover > p {
+  color: #5a2ea6;
+  cursor: pointer;
+}
+
+.item-footer {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
