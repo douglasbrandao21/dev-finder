@@ -5,6 +5,8 @@ const Dev = require("../Models/Dev");
 const stringToArray = require("../utils/stringToArray");
 const getLocation = require("../utils/getLocation");
 
+const { findConnections, sendMessage } = require("../websocket");
+
 module.exports = {
   async store(request, response) {
     const { github_username, techs, latitude, longitude } = request.body;
@@ -31,6 +33,12 @@ module.exports = {
           techs: techsArray,
           location
         });
+        const connections = findConnections(
+          { latitude, longitude },
+          techsArray
+        );
+
+        sendMessage(connections, "new-dev", dev);
       }
       return response.json(dev);
     } catch (error) {

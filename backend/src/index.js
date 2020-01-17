@@ -1,14 +1,19 @@
 const express = require("express");
 const mongoose = require("mongoose");
+const http = require("http");
 const cors = require("cors");
+const { setupWebsocket } = require("./websocket");
 
 const routes = require("./routes");
 
-const server = express();
+const app = express();
+app.use(cors());
+app.use(express.json());
+app.use(routes);
 
+const server = http.Server(app);
 server.listen(3333);
-server.use(cors());
-server.use(express.json());
+setupWebsocket(server);
 
 mongoose.connect(
   "mongodb+srv://admin:admin@cluster0-oa370.mongodb.net/devFinder?retryWrites=true&w=majority",
@@ -18,5 +23,3 @@ mongoose.connect(
     useCreateIndex: true
   }
 );
-
-server.use(routes);

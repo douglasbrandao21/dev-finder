@@ -14,7 +14,7 @@ export default function DevItem({ dev, removeDev }) {
           <img src={dev.avatar_url} alt="profile-pic" />
           <div className="user-info">
             <strong>{dev.name}</strong>
-            <span>{dev.techs}</span>
+            <span>{dev.techs.join(", ")}</span>
           </div>
         </header>
         <p>{dev.bio}</p>
